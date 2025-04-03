@@ -3,93 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>CRUD de Bancos</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        button {
-            margin: 2px;
-        }
-    </style>
 </head>
 <body>
-    <h1>CRUD de Bancos</h1>
+    <h1>LISTA DE BANCOS</h1>
     <form id="form">
         <input type="text" id="banco" placeholder="Banco" required>
         <input type="text" id="persona" placeholder="Persona" required>
         <input type="number" id="monto" placeholder="Monto" required>
-        <button type="submit">Agregar</button>
+        <button type="submit"><img src="./img/agregar.png" alt="" class="img"></button>
     </form>
     <table>
         <thead>
             <tr>
-                <th>Banco</th>
-                <th>Persona</th>
-                <th>Monto</th>
-                <th>Acciones</th>
+                <th class="header-input">Banco</th>
+                <th class="header-input">Persona</th>
+                <th class="header-input">Monto</th>
+                <th class="header-input">Acciones</th>
             </tr>
         </thead>
         <tbody id="tabla-body">
             <!-- Las filas se agregarán aquí -->
         </tbody>
     </table>
-
-    <script>
-        let datos = JSON.parse(localStorage.getItem('datos')) || [];
-
-        function renderizarTabla() {
-            const tablaBody = document.getElementById('tabla-body');
-            tablaBody.innerHTML = '';
-            datos.forEach((dato, index) => {
-                const fila = document.createElement('tr');
-                fila.innerHTML = `
-                    <td>${dato.banco}</td>
-                    <td>${dato.persona}</td>
-                    <td>${dato.monto}</td>
-                    <td>
-                        <button onclick="editar(${index})">Editar</button>
-                        <button onclick="eliminar(${index})">Eliminar</button>
-                    </td>
-                `;
-                tablaBody.appendChild(fila);
-            });
-        }
-
-        document.getElementById('form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const nuevoDato = {
-                banco: document.getElementById('banco').value,
-                persona: document.getElementById('persona').value,
-                monto: document.getElementById('monto').value
-            };
-            datos.push(nuevoDato);
-            localStorage.setItem('datos', JSON.stringify(datos));
-            renderizarTabla();
-            this.reset();
-        });
-
-        function editar(index) {
-            const dato = datos[index];
-            document.getElementById('banco').value = dato.banco;
-            document.getElementById('persona').value = dato.persona;
-            document.getElementById('monto').value = dato.monto;
-            eliminar(index);
-        }
-
-        function eliminar(index) {
-            datos.splice(index, 1);
-            localStorage.setItem('datos', JSON.stringify(datos));
-            renderizarTabla();
-        }
-
-        renderizarTabla();
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>

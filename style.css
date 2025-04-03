@@ -1,0 +1,42 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    /* margin: 5px; */
+    background-color: #ddd;
+  
+}
+h1{
+    text-align: center;
+    margin: 1px;
+}
+
+form{
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+button {
+    /* margin: 10px; */
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+}
+img{
+    width: 30px;
+    height: 3cap;
+}
+.header-input{
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+
+}
